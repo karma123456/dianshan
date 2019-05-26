@@ -1,0 +1,178 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台主页</title>
+    <script src="../bootstrap/js/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap/3.3.6/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/table/bootstrap-table.min.css">
+    <script src="../bootstrap/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/table/bootstrap-table.min.js"></script>
+    <!-- bootstrap-table.min.js -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <!-- 引入中文语言包 -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script>
+        var user = [];
+        var img = "";
+        jQuery(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8090/user/islogin",
+                xhrFields: {withCredentials: true},
+                success: function (data) {
+                    if (data.status == "success") {
+                        user = data.data;
+                        img = user.thridPartyId;
+                    } else {
+                        alert("请登陆");
+                        window.location.href = "../index/getotp.html";
+                    }
+                },
+                error: function (data) {
+                    alert("失败,原因为:" + data.responseText)
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            background-color: #32383e;
+        }
+
+        body, #admin, #leftlist {
+            margin: 0;
+            padding: 0;
+        }
+
+        #admin {
+            width: 100%;
+            height: 634px;
+        }
+
+        #leftlist {
+            float: left;
+            width: 15%;
+            height: 634px;
+            background-color: #1f1f1f;
+        }
+
+        #right {
+            margin: 0;
+            padding: 20px 0 0 0;
+            float: left;
+            width: auto;
+            height: 100%;
+        }
+        #leftlist {
+            color: #f7f7f7;
+        }
+        .list-group {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+
+        .list-group-item {
+            background-color: #1f1f1f;
+            border-color: #1f1f1f;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #f7f7f7;
+        }
+
+        a:hover > .list-group-item {
+            text-decoration: none;
+            background-color: #2e6da4;
+            color: #f7f7f7;
+        }
+
+        a:link {
+            color: #f7f7f7;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #f7f7f7;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #f7f7f7;
+            text-decoration: none;
+        }
+
+        #J_iframe {
+            padding-left: 20px;
+            width: 1130px;
+            height: 614px;
+        }
+
+        #break > span {
+            display: inline-block;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div id="admin">
+    <!--左边列表 start-->
+    <div id="leftlist">
+        <div id="left_top" style="padding:20px 0 0 40px;">
+            <img id="userimg" class="thumbnail" width="80px" src="">
+        </div>
+        <div id="left_center">
+            <ul class="list-group">
+                <li class="list-group-item">管理模块</li>
+                <a href="User_list.html" target="iframe">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理
+                    </li>
+                </a>
+                <a href="Item_list.html" target="iframe">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;商品管理
+                    </li>
+                </a>
+                <a href="Order_list.html" target="iframe">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;订单管理
+                    </li>
+                </a>
+
+            </ul>
+        </div>
+        <div id="left_bottom">
+            <ul class="list-group">
+                <li class="list-group-item">系统设置</li>
+                <a href="#">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;修改密码
+                    </li>
+                </a>
+                <a href="#">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;安全退出
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!--左边列表 end-->
+    <!--右边主体 start-->
+    <div id="right">
+        <iframe id="J_iframe" name="iframe" width="100%" height="100%" src="" frameborder="0" seamless></iframe>
+        </iframe>
+    </div>
+    <!--右边主体 end-->
+</div>
+<script>
+    $("#userimg").attr("src",img);
+</script>
+</body>
+</html>
