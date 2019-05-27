@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+           
+    <meta charset="utf-8">
+           
+    <style>
+
+        ul>.picture-small-li {
+            display: inline-block;
+            border: 1px solid #000;
+            width: 60px;
+            height: 60px;
+           box-size: border-boxing;
+       }
+
+       .picture-big img {
+            border-radius: 3px;
+           width: 350px;
+           height: 350px;
+            padding: 3px;
+           border: 1px solid #ccc;
+        }
+
+        .picture-small{
+          margin: 0;
+            padding: 0;
+       }
+         .picture-small-li img {
+             width: 58px;
+           height: 58px;
+        }
+
+ </style>
+       
+</head>
+   
+<body>
+   
+<div class="picture-big ">
+<img src="../image/lemon.jpg" class="img-responsive" id="pic"/>   
+</div>
+<div class="picture-small">       
+    <ul>           
+        <li id="li01" class="picture-small-li"><img src="../image/lemon.jpg"/></li>           
+        <li id="li02" class="picture-small-li"><img src="../image/stile-v.1-product-details.jpg"/></li>           
+        <li id="li03" class="picture-small-li"><img src="../image/lemon.jpg"/></li>           
+        <li id="li04" class="picture-small-li"><img src="../image/lemon.jpg"/></li>           
+        <li id="li05" class="picture-small-li"><img src="../image/lemon.jpg"/></li>       
+    </ul>   
+</div>
+   
+<script>
+    function show(canshu1, canshu2) {
+        var li01 = document.getElementById(canshu1)  //参数1为小图片的id,参数2为大图片的src
+        var pic = document.getElementById('pic')    // pic为大图片div的id
+        li01.onmouseover = function () {
+            pic.src = canshu2;                        // 把参数2设为新的src(路径)
+        }
+    }
+    show("li01", "../image/lemon.jpg")    //调用show()，用所有大小图片参数
+    show("li02", "../image/stile-v.1-product-details.jpg")
+    show("li03", "../image/lemon.jpg")
+    show("li04", "../image/lemon.jpg")
+    show("li05", "../image/lemon.jpg")
+</script>
+   
+</body>
+</html>

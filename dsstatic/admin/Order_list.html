@@ -1,0 +1,129 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台主页</title>
+    <script src="../bootstrap/js/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap/3.3.6/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/table/bootstrap-table.min.css">
+    <script src="../bootstrap/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/table/bootstrap-table.min.js"></script>
+    <!-- bootstrap-table.min.js -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <!--fileinput-->
+    <script src="../bootstrap-fileinput/js/fileinput.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-fileinput/css/fileinput.min.css">
+    <!-- 引入中文语言包 -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<style>
+    body, #admin, #right {
+        margin: 0;
+        padding: 0;
+    }
+
+    #admin {
+        width: 100%;
+        height: 100%;
+    }
+
+    #right {
+        float: left;
+        width: auto;
+        height: 100%;
+    }
+
+    #break {
+        padding-top: 20px;
+        padding-left: 20px;
+        width: 1100px;
+    }
+
+    #break > span {
+        display: inline-block;
+        float: left;
+    }
+
+    #listorder {
+        padding-left: 20px;
+    }
+</style>
+<body>
+<div id="admin">
+
+    <!--右边主体 start-->
+    <div id="right">
+        <!--面包屑导航 start-->
+        <div id="break">
+            <ul class="breadcrumb">
+                <li>
+                    <span class="glyphicon glyphicon-home"></span>
+                    <a href="#" style="color: #000;display: inline-block;">首页</a>
+                </li>
+                <li class="active">
+                    订单管理
+                </li>
+            </ul>
+        </div>
+        <!--面包屑导航 end-->
+        <!--订单列表 start-->
+        <div id="listorder">
+            <table class="table table-hover" id="mytable">
+            </table>
+        </div>
+        <!--订单列表 end-->
+    </div>
+    <!--右边主体 end-->
+    <!--编辑信息模态框-->
+    <div>
+        <div id="editmodel" class="modal fade" data-backrop="static" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h2>用户编辑</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <span class="label label-primary">用户名称：</span>
+                            <input type="text" id="edit_title" class="form-control" placeholder="用户名称">
+                        </div>
+                        <div class="input-group">
+                            <span class="label label-primary">用户性别：</span>
+                            <input type="text" id="edit_sex" class="form-control" placeholder="用户性别">
+                        </div>
+                        <div class="input-group">
+                            <span class="label label-primary">用户年龄：</span>
+                            <input type="text" id="edit_age" class="form-control" placeholder="用户年龄">
+                        </div>
+                        <div class="input-group">
+                            <span class="label label-primary">手机号码：</span>
+                            <input type="text" id="edit_phone" class="form-control" placeholder="手机号码">
+                        </div>
+                        <div class="input-group">
+                            <span class="label label-primary">用户图片：</span>
+                            <div style="padding-top: 9px;">
+                                <input id="file-edit" name="file" type="file" multiple>
+                                <form id="edit" enctype="multipart/form-data">
+                                </form>
+                            </div>
+                            <input type="text" id="edit_imgurl" class="form-control" placeholder="用户图片">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                        <button class="btn btn-primary" type="button" id="editSubmit">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="order_list.js"></script>
+</body>
+</html>

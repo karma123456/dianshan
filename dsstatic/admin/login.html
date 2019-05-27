@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script src="../bootstrap/js/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap/3.3.6/bootstrap.min.css">
+    <script src="../bootstrap/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: RGB(229, 229, 229);
+    }
+
+    #login {
+        width: 310px;
+        height: 420px;
+        margin: 5% auto auto auto;
+        padding: auto auto auto 30%;
+    }
+
+    #head, #center, #footer {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #head {
+        height: 130px;
+    }
+
+    #center {
+        height: 235px;
+
+        border-radius: 15px;
+        background-color: #f7f7f7;
+    }
+
+    #footer {
+        height: 55px;
+    }
+
+    .headimg {
+        padding-left: 38%;
+    }
+
+    .head {
+        padding-left: 34%;
+    }
+
+    #center > div {
+        margin: 15px auto auto 7%;
+    }
+
+    #footer > div {
+        margin-top: 30px;
+        height: 100%;
+        border: 1px solid #999999;
+        border-radius: 6px;
+    }
+
+    h5 {
+        padding-top: 10px;
+        padding-left: 24%;
+    }
+</style>
+<body>
+<div id="login">
+    <div id="head">
+        <div class="headimg">
+            <img id="img" class="thumbnail" width="60px" src="../image/lemon.jpg">
+        </div>
+        <div class="head">
+            <h2>Sign in</h2>
+        </div>
+    </div>
+    <div id="center" class="form-control">
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username" id="username">
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password" id="password">
+        </div>
+        <div class="input-group">
+            <button id="submit" class="btn btn-success" style="width:264px">Sign in</button>
+        </div>
+    </div>
+    <div id="footer">
+        <div>
+            <h5>New to ?<a href="#">Create an account</a></h5>
+        </div>
+    </div>
+</div>
+<script>
+    $("#submit").on("click", function () {
+        var name = $("#username").val();
+        var password = $("#password").val();
+        if (name == null || name == "") {
+            alert("用户名不能为空");
+            return false;
+        }
+        if (password == null || password == "") {
+            alert("登陆密码不能为空");
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            contentType: "application/x-www-form-urlencoded",
+            url: "http://localhost:8090/user/login",
+            data: {
+                "name": name,
+                "password": password,
+            },
+            xhrFields: {withCredentials: true},
+            success: function (data) {
+                if (data.status == "success") {
+                    alert("登录成功");
+                    window.location.href = 'admin/admin.html';
+                } else {
+                    alert("登录失败，原因为：" + data.data.errMsg);
+                }
+            },
+            error: function (data) {
+                alert("登录失败,原因为:" + data.responseText)
+            }
+        });
+        return false;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情页</title>
+    <script src="../bootstrap/js/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap/3.3.6/bootstrap.min.css">
+    <script src="../bootstrap/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <style>
+        body, #head, #item, #list, #footer {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1347px;
+            background-color: RGB(229, 229, 229);
+        }
+
+        #head {
+            width: 100%;
+            height: 40px;
+        }
+
+        #item {
+            width: 100%;
+            height: 580px;
+        }
+
+        #list {
+            width: 100%;
+            height: 700px;
+        }
+
+        #footer {
+            width: 100%;
+            height: 500px;
+        }
+
+        #head > table {
+            width: 100%;
+            height: 100%;
+        }
+
+        #item_center {
+            margin: 50px auto auto 15%;
+        }
+
+        #list_item {
+            margin: 50px auto auto 13%;
+        }
+
+        #item_center {
+            width: 980px;
+        }
+
+        #item_left, #item_right {
+            width: 46%;
+            height: 500px;
+
+            float: left;
+        }
+        #item_left{
+            padding: 0 0 0 20px;
+        }
+        #item_right{
+            padding: 0 20px 0 0;
+        }
+        .item {
+            width: 340px;
+            height: 80px;
+            padding: 0 0 0 150px;
+
+        }
+
+        .btnadd {
+            background-color: #222222;
+            height: 50px;
+            color: #f7f7f7;
+        }
+
+        #list_head {
+            padding-left: 49%;
+            padding-top: 10px;
+        }
+
+        .cary {
+            width: 225px;
+            height: 440px;
+            background-color: #fff;
+            float: left;
+        }
+
+        .cary > img, .cary > div {
+            width: 200px;
+            padding-left: 30px;
+            padding-top: 50px;
+        }
+
+        .cary > div {
+            padding-left: 75px;
+        }
+
+        .cary-left {
+            margin-left: 30px;
+        }
+
+        #footer_head {
+            width: 100%;
+            height: 180px;
+        }
+
+        #footer_bottom {
+            width: 100%;
+            height: 320px;
+            background-color: RGB(235, 235, 235);
+        }
+
+        #bottom {
+            height: 240px;
+
+        }
+
+        #bottom_footer {
+            height: 80px;
+            padding-left: 15%;
+            float: left;
+            color: #999999;
+        }
+
+        .footer {
+            float: right;
+            padding-right: 15%;
+            color: #999999;
+        }
+
+        li {
+            list-style-type: none;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #bottom > div {
+            padding-top: 40px;
+            float: left;
+        }
+
+        .boli {
+            padding-left: 15%;
+        }
+
+        .bo {
+            padding-left: 60px;
+        }
+
+        #bo_right {
+            padding-left: 180px;
+        }
+
+        .list_right, .list_left {
+            margin-top: 950px;
+            width: 60px;
+            height: 150px;
+        }
+
+        .list_left {
+            margin-left: 13%;
+        }
+
+        .list_right {
+            margin-right: 9%;
+        }
+
+        #bigimg,#smallimg{
+            width:100%;
+            margin:0;
+            padding: 0;
+        }
+        #bigimg{
+            height: 380px;
+        }
+
+        #smallimg{
+            height: 100px;
+        }
+        #smallimg img {
+            width: 58px;
+            height: 58px;
+        }
+        .imgul>li{
+            width: 60px;
+            height:60px;
+            border: 1px solid #9acfea;
+            display: inline-block;
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="head" class="row">
+    <table>
+        <tr>
+            <td class="col-xs-1" style="border-bottom: 1px solid #999999;">
+                <span class="glyphicon glyphicon-home"></span>
+            </td>
+            <td class="col-xs-8"
+                style="border-bottom: 1px solid #999999;border-right: 1px solid #999999;border-left: 1px solid #999999">
+                SITE
+            </td>
+            <td class="col-xs-1" style="border-bottom: 1px solid #999999;border-right: 1px solid #999999">
+                <span class="glyphicon glyphicon-search"></span>
+            </td>
+            <td class="col-xs-1" style="border-bottom: 1px solid #999999;border-right: 1px solid #999999">
+                <span class="glyphicon glyphicon-user">ADMIN</span>
+            </td>
+            <td class="col-xs-1" style="border-bottom: 1px solid #999999;">
+                <span class="glyphicon glyphicon-shopping-cart">CART</span>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="item">
+    <div id="item_center">
+        <ol class="breadcrumb" style="height:35px">
+            <li><a href="#">首页</a></li>
+            <li class="active"><a href="#">商品详情页</a></li>
+        </ol>
+        <div id="item_left">
+            <div id="bigimg">
+                <img src="../image/lemon.jpg" id="pic" style="width: 400px;height:380px">
+            </div>
+            <div id="smallimg">
+                <ul class="imgul">
+                    <li id="li01"><img src="../image/lemon.jpg"/></li>
+                    <li id="li02"><img src="../image/stile-v.1-product-details.jpg"/></li>
+                    <li id="li03"><img src="../image/lemon.jpg"/></li>
+                    <li id="li04"><img src="../image/lemon.jpg"/></li>
+                    <li id="li05"><img src="../image/lemon.jpg"/></li>
+                </ul>
+            </div>
+        </div>
+        <div id="item_right">
+            <div id="basc" class="item"></div>
+            <div class="item" id="promostartDateContainer">
+                <span>秒杀开始时间：</span>
+                <label id="promoStartDate"/>
+            </div>
+            <div class="item">
+                <h1 style="color: #000" id="title"></h1>
+            </div>
+            <div class="item">
+                <label>￥</label><label id="price"></label>
+
+                <label id="itemprice" style="color:red;font-size:xx-large"></label>
+                <br>
+                <label>库存：</label><label id="stock" name="stock"></label>
+            </div>
+            <div class="item">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="button" value="+" style="width: 35px" class="add"/>
+                        </td>
+                        <td>
+                            <input type="text" value="1" style="width: 35px" id="amount" name="amount"/>
+                        </td>
+                        <td>
+                            <input type="button" value="-" style="width: 35px" class="min"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <button class="btn btn-default btnadd" id="createorder">加入购物车</button>
+                <button class="btn btn-default">立即购买</button>
+            </div>
+            <div class="item" style="color: #999999;">
+                <label>Share</label>
+                <span class="glyphicon glyphicon-cloud" style="padding-left: 10px"></span>
+                <span class="glyphicon glyphicon-envelope" style="padding-left: 10px"></span>
+                <span class="glyphicon glyphicon-qrcode" style="padding-left: 10px"></span>
+                <span class="glyphicon glyphicon-barcode" style="padding-left: 10px"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="list">
+    <div id="list_head">
+        ——————<br>
+        &nbsp;&nbsp;&nbsp;精品推荐
+    </div>
+    <div id="list_item">
+        <a class="left carousel-control list_left" href="javascript:gotopage(-1);" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+        <div id="itemlist">
+
+        </div>
+        <a class="right carousel-control list_right" href="javascript:gotopage(1);" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+    </div>
+
+</div>
+<div id="footer">
+    <div id="footer_head">
+        <img src="../image/stile-v.1-product-details.jpg" width="1347px">
+    </div>
+    <div id="footer_bottom">
+        <div id="bottom">
+            <div class="boli">
+                <ul>
+                    <li style="height: 60px">CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                </ul>
+            </div>
+            <div class="bo">
+                <ul>
+                    <li style="height: 60px">CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                </ul>
+            </div>
+            <div class="bo">
+                <ul>
+                    <li style="height: 60px">CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                    <li>CATEGRET</li>
+                </ul>
+            </div>
+            <div id="bo_right">
+                <ul>
+                    <li style="height: 60px"><h1>SITE.</h1></li>
+                    <li>HTTP://GITHUB.COM/123456karma</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div id="bottom_footer">
+            Copyright@2019 Site.by github
+        </div>
+        <div class="footer">
+            <label>Share</label>
+            <span class="glyphicon glyphicon-cloud" style="padding-left: 10px"></span>
+            <span class="glyphicon glyphicon-envelope" style="padding-left: 10px"></span>
+            <span class="glyphicon glyphicon-qrcode" style="padding-left: 10px"></span>
+            <span class="glyphicon glyphicon-barcode" style="padding-left: 10px"></span>
+        </div>
+    </div>
+</div>
+<script src="shop.js"></script>
+<script>
+    $("#promostartDateContainer").hide();
+    function show(canshu1, canshu2) {
+        var li01 = document.getElementById(canshu1);  //参数1为小图片的id,参数2为大图片的src
+        var pic = document.getElementById('pic');    // pic为大图片div的id
+        li01.onmouseover = function () {
+            pic.src = canshu2;                        // 把参数2设为新的src(路径)
+        }
+    }
+    show("li01", "../image/lemon.jpg");    //调用show()，用所有大小图片参数
+    show("li02", "../image/stile-v.1-product-details.jpg");
+    show("li03", "../image/lemon.jpg");
+    show("li04", "../image/lemon.jpg");
+    show("li05", "../image/lemon.jpg");
+</script>
+</body>
+</html>
