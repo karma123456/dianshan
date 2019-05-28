@@ -1,4 +1,4 @@
-
+﻿
 //商品信息表格
 $("#mytable").bootstrapTable({
     method : "GET",
@@ -68,7 +68,8 @@ $("#mytable").bootstrapTable({
 });
 //图片
 function imagesrc(value, row, index){
-    return "<img style='width:30px' src='"+value+"'";
+	var tarra = value.split(';'); 
+    return "<img style='width:30px' src='"+tarra[0]+"'";
 };
 
 //删除、编辑操作
@@ -189,13 +190,17 @@ $("#editSubmit").on("click",function(){
 });
 
 //商品创建
-
+var images=[];
+var i=0;
 $("#ItemSubmit").on("click",function () {
     var title=$("#title").val();
     var price=$("#price").val();
     var desciption=$("#desciption").val();
     var stock=$("#stock").val();
-    var imgurl=$("#imgurl").val();
+var imgurl;
+for(var n=0;n<images.length;n++){
+    imgurl=images[n]+';';
+}
     var sales=$("#sales").val();
     if(title == null || title == ""){
         alert("商品标题不能为空");
@@ -250,8 +255,10 @@ $("#ItemSubmit").on("click",function () {
 });
 //商品添加图片上传
 $("#file-pic").fileinput({//初始化上传文件框
-    showUpload : false,
-    showRemove : false,
+showClose:false,
+
+    showUpload : true,
+    showRemove : true,
     uploadAsync: true,
     uploadLabel: "上传",//设置上传按钮的汉字
     uploadClass: "btn btn-primary",//设置上传按钮样式
@@ -259,24 +266,25 @@ $("#file-pic").fileinput({//初始化上传文件框
     language: "zh",//配置语言
     uploadUrl: "http://localhost:8090/item/upfile",
     maxFileSize : 0,
-    maxFileCount: 1,/*允许最大上传数，可以多个，当前设置单个*/
+    maxFileCount: 5,/*允许最大上传数，可以多个，当前设置单个*/
     enctype: 'multipart/form-data',
     allowedFileExtensions : ["jpg", "png","gif"],/*上传文件格式*/
     msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
     dropZoneTitle: "请通过拖拽图片文件放到这里",
     dropZoneClickTitle: "或者点击此区域添加图片",
-    showBrowse: false,
-    browseOnZoneClick: true,
+    showBrowse: true,
+    browseOnZoneClick: false,
     slugCallback : function(filename) {
         return filename.replace('(', '_').replace(']', '_');
     }
 });
+
 //上传文件成功，回调函数
 $("#file-pic").on("fileuploaded", function(event, data, previewId, index) {
     var result = data.response; //后台返回的json
-
-    $("#imgurl").val(result.data);
-
+  	//$("#imgurl").val(result.data);
+	images[i]=result.data;
+	i=i+1;
     $("#picid").val(result.id);//拿到后台传回来的id，给图片的id赋值序列化表单用
     $.ajax({//上传文件成功后再保存图片信息
         url:'BannerPicAction!savaForm.action',
@@ -312,7 +320,7 @@ $("#file-edit").fileinput({//初始化上传文件框
     language: "zh",//配置语言
     uploadUrl: "http://localhost:8090/item/upfile",
     maxFileSize : 0,
-    maxFileCount: 1,/*允许最大上传数，可以多个，当前设置单个*/
+    maxFileCount: 5,/*允许最大上传数，可以多个，当前设置单个*/
     enctype: 'multipart/form-data',
     allowedFileExtensions : ["jpg", "png","gif"],/*上传文件格式*/
     initialPreview: [

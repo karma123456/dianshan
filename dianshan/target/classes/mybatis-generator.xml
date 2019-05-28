@@ -44,13 +44,11 @@
         <table tableName="sequence_info" domainObjectName="SequenceDao" enableCountByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
-
+-->
         <table tableName="promo" domainObjectName="PromoDao" enableCountByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
-               -->
-        <table tableName="images" domainObjectName="ImagesDao" enableCountByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+
+
     </context>
 </generatorConfiguration>

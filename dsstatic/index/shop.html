@@ -230,15 +230,11 @@
         </ol>
         <div id="item_left">
             <div id="bigimg">
-                <img src="../image/lemon.jpg" id="pic" style="width: 400px;height:380px">
+                <img src="" id="pic" style="width: 400px;height:380px">
             </div>
             <div id="smallimg">
-                <ul class="imgul">
-                    <li id="li01"><img src="../image/lemon.jpg"/></li>
-                    <li id="li02"><img src="../image/stile-v.1-product-details.jpg"/></li>
-                    <li id="li03"><img src="../image/lemon.jpg"/></li>
-                    <li id="li04"><img src="../image/lemon.jpg"/></li>
-                    <li id="li05"><img src="../image/lemon.jpg"/></li>
+                <ul class="imgul" id="ul_img">
+                  
                 </ul>
             </div>
         </div>
@@ -265,11 +261,13 @@
                             <input type="button" value="+" style="width: 35px" class="add"/>
                         </td>
                         <td>
-                            <input type="text" value="1" style="width: 35px" id="amount" name="amount"/>
+			 <input type="text" value="1" style="width: 35px" id="amount" name="amount"/>
+                           
                         </td>
                         <td>
                             <input type="button" value="-" style="width: 35px" class="min"/>
                         </td>
+			<td>销量：<label id="sales"/></td>
                     </tr>
                 </table>
             </div>
@@ -358,18 +356,7 @@
 <script src="shop.js"></script>
 <script>
     $("#promostartDateContainer").hide();
-    function show(canshu1, canshu2) {
-        var li01 = document.getElementById(canshu1);  //参数1为小图片的id,参数2为大图片的src
-        var pic = document.getElementById('pic');    // pic为大图片div的id
-        li01.onmouseover = function () {
-            pic.src = canshu2;                        // 把参数2设为新的src(路径)
-        }
-    }
-    show("li01", "../image/lemon.jpg");    //调用show()，用所有大小图片参数
-    show("li02", "../image/stile-v.1-product-details.jpg");
-    show("li03", "../image/lemon.jpg");
-    show("li04", "../image/lemon.jpg");
-    show("li05", "../image/lemon.jpg");
+   
 </script>
 </body>
 </html>

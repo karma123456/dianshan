@@ -1,4 +1,4 @@
-
+﻿
 $("#mytable").bootstrapTable({
     method: "GET",
     url: "http://localhost:8090/user/list",//请求路径
@@ -208,9 +208,7 @@ $("#file-edit").fileinput({//初始化上传文件框
     maxFileCount: 1,/*允许最大上传数，可以多个，当前设置单个*/
     enctype: 'multipart/form-data',
     allowedFileExtensions : ["jpg", "png","gif"],/*上传文件格式*/
-    initialPreview: [
-        "<img src='__ROOT__"+edit_item.image+"' class='file-preview-image'>"
-    ],
+   
     msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
     dropZoneTitle: "请通过拖拽图片文件放到这里",
     dropZoneClickTitle: "或者点击此区域添加图片",

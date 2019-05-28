@@ -18,9 +18,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -134,8 +137,9 @@ public class ItemController extends BaseController {
     @RequestMapping(value = "/upfile")
     @ResponseBody
     public CommonReturnType upfile(HttpServletRequest request, HttpServletResponse response) throws IOException, BusinessException {
-        Map<String,Object> resultes = new HashMap<String,Object>();
+        Map<String, Object> resultes = new HashMap<String, Object>();
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+        Map<String,MultipartFile> fileMap = multipartHttpServletRequest.getFileMap();
         MultipartFile file = multipartHttpServletRequest.getFile("file");
         //判断文件是否为空
         if(file.isEmpty()){
@@ -143,20 +147,14 @@ public class ItemController extends BaseController {
         }
         //获取文件名
         String fileName = file.getOriginalFilename();
-        // 存放上传图片的文件夹
         File fileDir = UploadUtils.getImgDirFile();
-        // 输出文件夹绝对路径  -- 这里的绝对路径是相当于当前项目的路径而不是“容器”路径
-        //System.out.println(fileDir.getAbsolutePath());
         try {
-            // 构建真实的文件路径
             File newFile = new File(fileDir.getAbsolutePath() + File.separator + fileName);
-          //  System.out.println(newFile.getAbsolutePath());
-            // 上传图片到 -> “绝对路径”
             file.transferTo(newFile);
         } catch (IOException e) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR,"上传失败");
         }
         String url="http:/localhost:8090/images/"+fileName;
-       return CommonReturnType.creat(url);
+        return CommonReturnType.creat(url);
     }
 }

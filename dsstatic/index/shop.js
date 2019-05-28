@@ -24,6 +24,13 @@ jQuery(document).ready(function () {
                 g_itemvo = data.data;
                 reloadDom();
                 setInterval(reloadDom, 1000);
+		//商品图片
+ 		 var tarra = g_itemvo.image.split(';',5);
+		$("#pic").attr("src",tarra[0]);
+		for(var i = 1;i<=tarra.length;i++){
+		var dom =  "<li id='"+i+"'><img src='"+tarra[i-1]+"'/></li>";
+		$("#ul_img").append(dom);
+		}
             }
             else {
                 alert("获取信息失败" + data.data.errMsg);
@@ -35,6 +42,7 @@ jQuery(document).ready(function () {
     });
 });
 
+
 //将获取到的商品信息填入页面
 //对特价商品添加倒计时模块
 function reloadDom() {
@@ -42,7 +50,8 @@ function reloadDom() {
     $("#stock").text(g_itemvo.stock);
     $("#price").text(g_itemvo.price);
     <!--$("#imgurl").attr("src", g_itemvo.imgurl);-->
-   <!-- $("#sales").text(g_itemvo.sales);-->
+	 
+   $("#sales").text(g_itemvo.sales);
 	var itemprice = $("#price");
       
     if (g_itemvo.promoStatus == 1) {
@@ -150,7 +159,8 @@ jQuery(document).ready(function () {
 function reloadlist(){
 	for(var i=0;i<g_itemlist.length;i++){
 		var itemlist=g_itemlist[i];
-		var dom = "<div class='cary cary-left' name='box'><img src='lemon.jpg'><div><label>￥"+itemlist.price+"</label><h3>"+itemlist.title+"</h3></div></div>";
+		var tarra = itemlist.image.split(';'); 
+		var dom = "<div class='cary cary-left' name='box'><img src='"+tarra[0]+"'><div><label>￥"+itemlist.price+"</label><h3>"+itemlist.title+"</h3></div></div>";
 		$("#itemlist").append(dom);
 		}
 		pagelist();
